@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}About OptiCrop – Intelligent Agriculture Decision Support System{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-success text-white text-center mb-5">
+    <div class="container">
+        <h1 class="fw-bold mb-2">About OptiCrop System</h1>
+        <p class="lead mb-0">Learn about the technology, methodology, and scope behind this smart farming system.</p>
+    </div>
+</section>
+
+<div class="container mb-5">
+    <div class="row g-4">
+        
+        <!-- Objective and Problem Statement -->
+        <div class="col-lg-8">
+            <div class="custom-card p-4 mb-4 bg-white">
+                <h3 class="fw-bold text-success mb-3"><i class="fa-solid fa-bullseye me-2"></i>Project Objective</h3>
+                <p>The primary goal of <strong>OptiCrop</strong> is to develop a scientific decision support application that assists farmers, agronomists, and agricultural planners in selecting the most profitable and high-yielding crops. By analyzing specific soil nutritional levels and macroclimatic conditions, the system minimizes human guesswork, reduces crop failures, and fosters sustainable cultivation practices.</p>
+            </div>
+
+            <div class="custom-card p-4 mb-4 bg-white">
+                <h3 class="fw-bold text-danger mb-3"><i class="fa-solid fa-triangle-exclamation me-2"></i>Problem Statement</h3>
+                <p>Traditional farming relies heavily on ancestral knowledge, which can be vulnerable to rapid climate changes, irregular rainfall patterns, and declining soil fertility. Planting the wrong crop leads to poor harvests, heavy economic losses for families, and soil degradation due to excessive chemical fertilizer usage. There is an urgent need for an interactive, data-driven system that evaluates environmental parameters and suggests optimal crops before planting begins.</p>
+            </div>
+
+            <div class="custom-card p-4 bg-white">
+                <h3 class="fw-bold text-success mb-3"><i class="fa-solid fa-robot me-2"></i>Machine Learning Algorithm</h3>
+                <p>OptiCrop implements a <strong>Random Forest Classifier</strong>, an ensemble machine learning algorithm that constructs a multitude of decision trees during training. It merges their predictions to yield a more stable and accurate prediction.</p>
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                    <i class="fa-solid fa-circle-info fs-4 me-3"></i>
+                    <div>
+                        <strong>Why Random Forest?</strong> It handles non-linear relationships efficiently, avoids overfitting by averaging multiple decision trees, offers high feature robustness, and yields reliable probability estimates (used for the confidence score).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack and Sidebar Details -->
+        <div class="col-lg-4">
+            <div class="custom-card p-4 mb-4 bg-white">
+                <h4 class="fw-bold text-success mb-3"><i class="fa-solid fa-database me-2"></i>Dataset Profile</h4>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-3">
+                        <strong>Source:</strong> Standard Precision Agriculture dataset.
+                    </li>
+                    <li class="mb-3">
+                        <strong>Instances:</strong> 2,200 records representing crop conditions.
+                    </li>
+                    <li class="mb-3">
+                        <strong>Features analyzed:</strong>
+                        <ul class="small text-muted mt-1">
+                            <li>Nitrogen (N), Phosphorus (P), Potassium (K) in soil</li>
+                            <li>Temperature (°C) and Relative Humidity (%)</li>
+                            <li>Soil pH (acidity/alkalinity scale)</li>
+                            <li>Rainfall (mm depth)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Classes:</strong> 22 diverse commercial food and cash crops.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="custom-card p-4 mb-4 bg-white">
+                <h4 class="fw-bold text-success mb-3"><i class="fa-solid fa-layer-group me-2"></i>Technology Stack</h4>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge bg-secondary p-2">Python 3</span>
+                    <span class="badge bg-secondary p-2">Flask</span>
+                    <span class="badge bg-secondary p-2">Jinja2</span>
+                    <span class="badge bg-secondary p-2">Bootstrap 5</span>
+                    <span class="badge bg-secondary p-2">Scikit-Learn</span>
+                    <span class="badge bg-secondary p-2">Pandas</span>
+                    <span class="badge bg-secondary p-2">NumPy</span>
+                </div>
+            </div>
+
+            <div class="custom-card p-4 bg-white">
+                <h4 class="fw-bold text-success mb-3"><i class="fa-solid fa-arrow-trend-up me-2"></i>Future Scope</h4>
+                <ul class="list-unstyled small text-muted mb-0">
+                    <li class="mb-2"><i class="fa-solid fa-chevron-right me-1"></i> Integration with live IoT sensors</li>
+                    <li class="mb-2"><i class="fa-solid fa-chevron-right me-1"></i> Regional GPS weather forecast API integration</li>
+                    <li class="mb-2"><i class="fa-solid fa-chevron-right me-1"></i> Multi-language localization support</li>
+                    <li><i class="fa-solid fa-chevron-right me-1"></i> Market-price mapping for profitability scoring</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

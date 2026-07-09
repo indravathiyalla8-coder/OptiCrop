@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}OptiCrop – Intelligent Agriculture Optimization System{% endblock %}
+
+{% block content %}
+<!-- Hero Banner -->
+<section class="hero-section animate-fade-in">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="hero-title">Optimize Your Crop Yield with Artificial Intelligence</h1>
+                <p class="hero-subtitle">Input your soil properties and local climate indicators, and our advanced machine learning algorithm will recommend the ideal crop for maximum production yield.</p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="{{ url_for('predict') }}" class="btn btn-accent btn-lg"><i class="fa-solid fa-seedling me-2"></i>Predict Crop Now</a>
+                    <a href="{{ url_for('about') }}" class="btn btn-outline-light btn-lg">Learn More <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block text-center">
+                <i class="fa-solid fa-tractor fa-10x text-white float-tractor" style="opacity: 0.8; animation: float 4s ease-in-out infinite;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Introduction -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5 animate-fade-in delay-100">
+            <div class="col-lg-8">
+                <h2 class="fw-bold text-success">Welcome to OptiCrop</h2>
+                <div class="h-1 bg-success mx-auto my-3" style="width: 80px; height: 3px; border-radius: 2px;"></div>
+                <p class="text-muted lead">OptiCrop bridges the gap between traditional farming wisdom and data-driven agricultural science. By analyzing crucial macro-nutrients and environmental parameters, it provides customized cultivation advice.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-white border-top border-bottom">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <span class="text-success text-uppercase fw-bold letter-spacing-1">How it Works</span>
+                <h2 class="fw-bold mt-2">OptiCrop Core Features</h2>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4 animate-fade-in delay-100">
+                <div class="custom-card p-4 h-100 text-center">
+                    <div class="feature-icon"><i class="fa-solid fa-vial"></i></div>
+                    <h4 class="fw-bold">Soil Profile Analysis</h4>
+                    <p class="text-muted">Analyzes essential macro-nutrients: Nitrogen (N), Phosphorus (P), and Potassium (K) to understand the organic strength of your soil.</p>
+                </div>
+            </div>
+            <div class="col-md-4 animate-fade-in delay-200">
+                <div class="custom-card p-4 h-100 text-center">
+                    <div class="feature-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+                    <h4 class="fw-bold">Climatic Integration</h4>
+                    <p class="text-muted">Considers ambient temperature, relative humidity, and rainfall patterns to align crops with optimal growing climates.</p>
+                </div>
+            </div>
+            <div class="col-md-4 animate-fade-in delay-300">
+                <div class="custom-card p-4 h-100 text-center">
+                    <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h4 class="fw-bold">Random Forest Predictor</h4>
+                    <p class="text-muted">Utilizes a robust Random Forest machine learning classifier to guarantee high precision in recommending the ideal crop.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="text-success text-uppercase fw-bold letter-spacing-1">Key Advantages</span>
+                <h2 class="fw-bold mt-2 mb-4 text-success">Why Choose OptiCrop?</h2>
+                
+                <div class="d-flex mb-4">
+                    <div class="flex-shrink-0 text-success fs-3 me-3">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold">Maximize Production Yields</h5>
+                        <p class="text-muted">By planting crops that match your specific soil and climate conditions, you drastically reduce failure rates and boost harvest output.</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex mb-4">
+                    <div class="flex-shrink-0 text-success fs-3 me-3">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold">Smart Fertilizer Efficiency</h5>
+                        <p class="text-muted">Get custom guidelines showing whether your N-P-K levels are insufficient, balanced, or excessive, preventing resource waste.</p>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="flex-shrink-0 text-success fs-3 me-3">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold">Climate Resilience</h5>
+                        <p class="text-muted">Protect crops from unexpected droughts, heavy rains, or extreme temperatures by selecting the most resilient crops in advance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 text-center">
+                <div class="p-5 border rounded-5 shadow-lg bg-white position-relative" style="border-color: rgba(45, 106, 79, 0.15) !important;">
+                    <div class="position-absolute top-0 start-50 translate-middle bg-success text-white py-2 px-4 rounded-pill fw-bold">
+                        <i class="fa-solid fa-chart-line me-2"></i>Data Driven
+                    </div>
+                    <h3 class="fw-bold text-success mb-3 mt-2">Ready to Cultivate Smart?</h3>
+                    <p class="text-muted mb-4">Make crop selection simple, fast, and scientific. Try the predictor now to optimize your agriculture workflow.</p>
+                    <a href="{{ url_for('predict') }}" class="btn btn-custom btn-lg"><i class="fa-solid fa-arrow-pointer me-2"></i>Go to Predictor Form</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

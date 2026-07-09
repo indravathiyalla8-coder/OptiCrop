@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediction Results – OptiCrop{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="custom-card p-5 bg-white animate-fade-in">
+                
+                <div class="text-center mb-5">
+                    <span class="rec-badge mb-2"><i class="fa-solid fa-square-check me-2"></i>Analysis Complete</span>
+                    <h1 class="fw-bold text-success mt-2">Cultivation Recommendations</h1>
+                    <p class="text-muted">Based on your dynamic soil inputs and climatic profiles, we have generated the optimal cultivation parameters.</p>
+                    <div class="h-1 bg-success mx-auto my-3" style="width: 80px; height: 3px; border-radius: 2px;"></div>
+                </div>
+
+                <div class="row g-4 mb-5 align-items-center">
+                    <!-- Gauge Indicator -->
+                    <div class="col-md-4 text-center">
+                        <div class="gauge-container">
+                            <svg class="gauge-svg" width="150" height="150" viewBox="0 0 150 150">
+                                <circle class="gauge-bg" cx="75" cy="75" r="70"></circle>
+                                <circle class="gauge-fill" cx="75" cy="75" r="70" data-score="{{ confidence }}"></circle>
+                            </svg>
+                            <div class="gauge-text">{{ confidence }}%</div>
+                        </div>
+                        <p class="text-muted small mt-3 fw-bold">Prediction Confidence</p>
+                    </div>
+
+                    <!-- Recommended Crop Info -->
+                    <div class="col-md-8 text-center text-md-start border-start-md">
+                        <span class="text-success text-uppercase fw-bold small">Optimal Crop Recommendation</span>
+                        <h2 class="display-5 fw-bold text-primary-light my-2 text-capitalize">
+                            <i class="fa-solid fa-leaf text-success me-2"></i>{{ crop }}
+                        </h2>
+                        <p class="text-muted lead">The machine learning classifier predicts that planting <strong>{{ crop }}</strong> in these conditions provides the highest success likelihood and optimal crop lifecycle development.</p>
+                    </div>
+                </div>
+
+                <!-- Agricultural Suggestions -->
+                <h4 class="fw-bold text-success mb-4 border-bottom pb-2"><i class="fa-solid fa-lightbulb me-2"></i>Agronomic Guidelines</h4>
+
+                <div class="suggestion-card season">
+                    <h5 class="text-info"><i class="fa-solid fa-cloud-sun me-2"></i>Suitable Growing Season</h5>
+                    <p class="mb-0 text-muted"><strong>Season:</strong> {{ season }}. This crop thrives during these months due to matching temperature levels and native natural solar cycle parameters.</p>
+                </div>
+
+                <div class="suggestion-card">
+                    <h5 class="text-success"><i class="fa-solid fa-seedling me-2"></i>Soil & Water Suggestions</h5>
+                    <p class="mb-0 text-muted">{{ suggestions }}</p>
+                </div>
+
+                <div class="suggestion-card fertilizer">
+                    <h5 class="text-warning"><i class="fa-solid fa-flask-vial me-2"></i>Fertilizer Adjustments (N-P-K Guidance)</h5>
+                    <p class="mb-0 text-muted">{{ fertilizer_suggestion }}</p>
+                </div>
+
+                <!-- Input Summary Card -->
+                <div class="p-4 bg-light rounded-4 mt-5 mb-4">
+                    <h5 class="fw-bold text-primary-light mb-3"><i class="fa-solid fa-sliders me-2"></i>Tested Parameters Summary</h5>
+                    <div class="row text-center g-2 text-muted small">
+                        <div class="col-4 col-md-2 p-2 border rounded bg-white">
+                            <span class="d-block fw-bold text-dark">{{ N }}</span> Nitrogen (N)
+                        </div>
+                        <div class="col-4 col-md-2 p-2 border rounded bg-white">
+                            <span class="d-block fw-bold text-dark">{{ P }}</span> Phosphorus (P)
+                        </div>
+                        <div class="col-4 col-md-2 p-2 border rounded bg-white">
+                            <span class="d-block fw-bold text-dark">{{ K }}</span> Potassium (K)
+                        </div>
+                        <div class="col-4 col-md-2 p-2 border rounded bg-white">
+                            <span class="d-block fw-bold text-dark">{{ temperature }}°C</span> Temp
+                        </div>
+                        <div class="col-4 col-md-2 p-2 border rounded bg-white">
+                            <span class="d-block fw-bold text-dark">{{ humidity }}%</span> Humidity
+                        </div>
+                        <div class="col-4 col-md-2 p-2 border rounded bg-white">
+                            <span class="d-block fw-bold text-dark">{{ ph }}</span> pH
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back button -->
+                <div class="text-center mt-5">
+                    <a href="{{ url_for('predict') }}" class="btn btn-custom px-5"><i class="fa-solid fa-arrow-left me-2"></i>Analyze Another Field</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

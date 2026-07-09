@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Predict Suitable Crop – OptiCrop Predictor Form{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="custom-card p-5 bg-white animate-fade-in">
+                
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold text-success"><i class="fa-solid fa-square-poll-horizontal me-2"></i>Crop recommendation form</h2>
+                    <p class="text-muted">Fill in the values of soil characteristics and climate parameters. The model will analyze the values and predict the most suitable crop.</p>
+                    <div class="h-1 bg-success mx-auto my-3" style="width: 60px; height: 3px; border-radius: 2px;"></div>
+                </div>
+
+                {% if error %}
+                <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i> <strong>Validation Error:</strong> {{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+
+                <form id="predictionForm" action="{{ url_for('predict_result') }}" method="POST" class="needs-validation" novalidate>
+                    
+                    <!-- Soil Nutrients Section -->
+                    <h5 class="form-section-title"><i class="fa-solid fa-seedling me-2"></i>Soil Nutrients (N-P-K)</h5>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <label for="N" class="form-label">Nitrogen (N) <span class="form-unit">(mg/kg or kg/ha)</span></label>
+                            <input type="number" step="any" class="form-control" id="N" name="N" placeholder="e.g. 90" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="P" class="form-label">Phosphorus (P) <span class="form-unit">(mg/kg or kg/ha)</span></label>
+                            <input type="number" step="any" class="form-control" id="P" name="P" placeholder="e.g. 42" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="K" class="form-label">Potassium (K) <span class="form-unit">(mg/kg or kg/ha)</span></label>
+                            <input type="number" step="any" class="form-control" id="K" name="K" placeholder="e.g. 43" required>
+                        </div>
+                    </div>
+
+                    <!-- Climatic Parameters Section -->
+                    <h5 class="form-section-title"><i class="fa-solid fa-cloud-sun-rain me-2"></i>Climatic Parameters</h5>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label for="temperature" class="form-label">Temperature <span class="form-unit">(°C)</span></label>
+                            <input type="number" step="any" class="form-control" id="temperature" name="temperature" placeholder="e.g. 23.6" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="humidity" class="form-label">Humidity <span class="form-unit">(%)</span></label>
+                            <input type="number" step="any" class="form-control" id="humidity" name="humidity" placeholder="e.g. 82.5" required>
+                        </div>
+                    </div>
+
+                    <!-- Soil pH and Rainfall Section -->
+                    <h5 class="form-section-title"><i class="fa-solid fa-gauge-simple-high me-2"></i>Soil Acid / Rainfall</h5>
+                    <div class="row g-3 mb-5">
+                        <div class="col-md-6">
+                            <label for="ph" class="form-label">Soil pH Value <span class="form-unit">(3.5 to 10)</span></label>
+                            <input type="number" step="any" class="form-control" id="ph" name="ph" placeholder="e.g. 6.5" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="rainfall" class="form-label">Average Annual Rainfall <span class="form-unit">(mm)</span></label>
+                            <input type="number" step="any" class="form-control" id="rainfall" name="rainfall" placeholder="e.g. 202.9" required>
+                        </div>
+                    </div>
+
+                    <!-- Submit & Reset Buttons -->
+                    <div class="d-flex gap-3 justify-content-end">
+                        <button type="reset" class="btn btn-outline-secondary px-4 py-2" style="border-radius: 30px;"><i class="fa-solid fa-rotate-left me-2"></i>Reset Form</button>
+                        <button type="submit" class="btn btn-custom px-5 py-2"><i class="fa-solid fa-wand-magic-sparkles me-2"></i>Predict Crop</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
